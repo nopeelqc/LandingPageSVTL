@@ -37,9 +37,9 @@
     </div>
   </div>
 
-  <header class="header" id="header">
+  <header class="header" id="daudotrang">
     <div class="container header__inner">
-      <a href="#hero" class="brand-logo" aria-label="Sen Vòi Thăng Long">
+      <a href="#khungchinh" class="brand-logo" aria-label="Sen Vòi Thăng Long">
         <div class="brand-logo__symbol">
           <span>STL</span>
         </div>
@@ -51,37 +51,37 @@
 
       <nav class="main-nav" aria-label="Menu chính">
         <ul class="main-nav__list">
-          <li><a href="#hero" class="nav-item is-active">Trang chủ</a></li>
-          <li><a href="#about" class="nav-item">Giới thiệu</a></li>
+          <li><a href="#khungchinh" class="nav-item is-active">Trang chủ</a></li>
+          <li><a href="#gioithieu" class="nav-item">Giới thiệu</a></li>
           <li><a href="sanpham.html" class="nav-item">Sản phẩm <i class="fa-solid fa-chevron-down nav-item__arrow"></i></a></li>
-          <li><a href="#reviews" class="nav-item">Khách hàng</a></li>
-          <li><a href="#contact" class="nav-item">Liên hệ</a></li>
+          <li><a href="#danhgia" class="nav-item">Khách hàng</a></li>
+          <li><a href="#lienhe" class="nav-item">Liên hệ</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <button class="pill-btn pill-btn--dark" id="catalogueBtn">
+        <button class="pill-btn pill-btn--dark" id="nuttai">
           <span>CATALOGUE</span>
           <i class="fa-solid fa-arrow-down-to-line"></i>
         </button>
-        <button class="icon-circle-btn" id="searchTrigger" aria-label="Tìm kiếm">
+        <button class="icon-circle-btn" id="nuttimkiem" aria-label="Tìm kiếm">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-        <button class="hamburger-btn" id="hamburger" aria-label="Menu di động">
+        <button class="hamburger-btn" id="nutmenu" aria-label="Menu di động">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
 
-    <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer" id="ngankeo">
       <ul class="mobile-drawer__list">
-        <li><a href="#hero" class="mobile-drawer__link">Trang chủ</a></li>
-        <li><a href="#about" class="mobile-drawer__link">Giới thiệu</a></li>
+        <li><a href="#khungchinh" class="mobile-drawer__link">Trang chủ</a></li>
+        <li><a href="#gioithieu" class="mobile-drawer__link">Giới thiệu</a></li>
         <li><a href="sanpham.html" class="mobile-drawer__link">Sản phẩm & Bộ sưu tập</a></li>
-        <li><a href="#reviews" class="mobile-drawer__link">Khách hàng nói về chúng tôi</a></li>
-        <li><a href="#contact" class="mobile-drawer__link">Liên hệ tư vấn</a></li>
+        <li><a href="#danhgia" class="mobile-drawer__link">Khách hàng nói về chúng tôi</a></li>
+        <li><a href="#lienhe" class="mobile-drawer__link">Liên hệ tư vấn</a></li>
         <li class="mobile-drawer__action">
-          <button class="pill-btn pill-btn--teal pill-btn--full" id="catalogueBtnMobile">
+          <button class="pill-btn pill-btn--teal pill-btn--full" id="nuttaididong">
             <span>TẢI CATALOGUE 2026 (PDF)</span>
           </button>
         </li>
@@ -103,16 +103,9 @@
   </div>
 
   <main>
-    <section class="hero-section" id="hero">
+    <section class="hero-section" id="khungchinh">
       <div class="container hero-section__inner">
-        
-	  	<!-- -->
-
-
 		<div class="hero-art-circle" aria-hidden="true"></div>
-		
-		
-		<!-- -->
 
         <div class="hero-layout hero-layout--full">
           <div class="hero-typography">
@@ -133,7 +126,7 @@
               </p>
 
               <div class="hero-cta-group">
-                <a href="#contact" class="btn-editorial btn-editorial--teal">
+                <a href="#lienhe" class="btn-editorial btn-editorial--teal">
                   <span>Tải App Bảo Hành Điện Tử</span>
                   <i class="fa-solid fa-arrow-right"></i>
                 </a>
@@ -209,7 +202,7 @@
       </div>
     </section>
 
-    <section class="section-about" id="about">
+    <section class="section-about" id="gioithieu">
       <div class="container">
         <div class="about-grid reveal">
           <div class="about-lead">
@@ -241,7 +234,7 @@
       </div>
     </section>
 
-    <section class="section-trust" id="certifications">
+    <section class="section-trust" id="chungnhan">
       <div class="container">
         <div class="trust-marquee-wrapper reveal">
           <div class="trust-marquee-header">
@@ -387,7 +380,7 @@
       </div>
     </section>
 
-    <section class="section-testimonials" id="reviews">
+    <section class="section-testimonials" id="danhgia">
       <div class="container">
         <div class="section-header-flex">
           <div>
@@ -400,7 +393,7 @@
         </div>
 
         <div class="testimonial-slider-wrap reveal">
-          <div class="testimonial-stage" id="testimonialStage">
+          <div class="testimonial-stage" id="khungdanhgia">
             <div class="testimonial-card is-active" data-index="0">
               <div class="testimonial-card__left">
                 <div class="reviewer-avatar-wrap">
@@ -496,15 +489,15 @@
           </div>
 
           <div class="testimonial-controls">
-            <button class="t-btn t-btn--prev" id="testiPrevBtn" aria-label="Đánh giá trước">
+            <button class="t-btn t-btn--prev" id="nuttruoc" aria-label="Đánh giá trước">
               <i class="fa-solid fa-chevron-left"></i>
             </button>
-            <div class="testimonial-dots" id="testimonialDots">
+            <div class="testimonial-dots" id="chamdanhgia">
               <span class="t-dot is-active" data-index="0"></span>
               <span class="t-dot" data-index="1"></span>
               <span class="t-dot" data-index="2"></span>
             </div>
-            <button class="t-btn t-btn--next" id="testiNextBtn" aria-label="Đánh giá tiếp theo">
+            <button class="t-btn t-btn--next" id="nutsau" aria-label="Đánh giá tiếp theo">
               <i class="fa-solid fa-chevron-right"></i>
             </button>
           </div>
@@ -512,7 +505,7 @@
       </div>
     </section>
 
-    <section class="section-contact" id="contact">
+    <section class="section-contact" id="lienhe">
       <div class="container">
         <div class="contact-box-wrapper reveal">
           <div class="contact-info-panel">
@@ -550,29 +543,29 @@
           </div>
 
           <div class="contact-form-panel">
-            <form class="lead-form" id="consultationForm">
+            <form class="lead-form" id="bieumautuvan">
               <h3 class="form-title">Đăng Ký Tư Vấn / Báo Giá Dự Án</h3>
               <p class="form-subtitle">Chuyên viên kỹ thuật sẽ liên hệ gửi bản vẽ và bảng giá trong vòng 15 phút.</p>
 
               <div class="form-field-group">
-                <label for="formName">Họ và tên của bạn *</label>
-                <input type="text" id="formName" required placeholder="Ví dụ: KTS. Trần Quang Hưng" class="form-control" />
+                <label for="oten">Họ và tên của bạn *</label>
+                <input type="text" id="oten" required placeholder="Ví dụ: KTS. Trần Quang Hưng" class="form-control" />
               </div>
 
               <div class="form-grid-2">
                 <div class="form-field-group">
-                  <label for="formPhone">Số điện thoại *</label>
-                  <input type="tel" id="formPhone" required placeholder="0912 xxx xxx" class="form-control" />
+                  <label for="osodienthoai">Số điện thoại *</label>
+                  <input type="tel" id="osodienthoai" required placeholder="0912 xxx xxx" class="form-control" />
                 </div>
                 <div class="form-field-group">
-                  <label for="formEmail">Email</label>
-                  <input type="email" id="formEmail" placeholder="email@gmail.com" class="form-control" />
+                  <label for="oemail">Email</label>
+                  <input type="email" id="oemail" placeholder="email@gmail.com" class="form-control" />
                 </div>
               </div>
 
               <div class="form-field-group">
-                <label for="formDemand">Nhu cầu của bạn</label>
-                <select id="formDemand" class="form-control form-select">
+                <label for="onhucau">Nhu cầu của bạn</label>
+                <select id="onhucau" class="form-control form-select">
                   <option value="sen-cay">Tư vấn Sen cây nhiệt độ cao cấp</option>
                   <option value="am-tuong">Thiết kế & Lắp đặt sen tắm âm tường</option>
                   <option value="dai-ly">Đăng ký làm Đại lý phân phối chính hãng</option>
@@ -581,8 +574,8 @@
               </div>
 
               <div class="form-field-group">
-                <label for="formNotes">Ghi chú yêu cầu cụ thể</label>
-                <textarea id="formNotes" rows="3" placeholder="Số lượng phòng tắm, bản vẽ mặt bằng nếu có..." class="form-control"></textarea>
+                <label for="oghichu">Ghi chú yêu cầu cụ thể</label>
+                <textarea id="oghichu" rows="3" placeholder="Số lượng phòng tắm, bản vẽ mặt bằng nếu có..." class="form-control"></textarea>
               </div>
 
               <button type="submit" class="pill-btn pill-btn--teal pill-btn--full">
@@ -610,13 +603,12 @@
             </div>
           </div>
           <p class="footer-bio">
-            Công ty TNHH Sen Vòi Thăng Long. Tiên phong ứng dụng công nghệ PVD và van ổn nhiệt trong các giải pháp phòng tắm hiện đại tại Việt Nam.
+            
           </p>
-          <div class="footer-badges">
-            <span class="badge-cert">ISO 9001:2015</span>
-            <span class="badge-cert">DIN EN 817 (EU)</span>
-            <span class="badge-cert">CE Certified</span>
-          </div>
+          	<a class="khungbando" href="https://www.google.com/maps/search/?api=1&query=85A+ng%C3%B5+259+%C4%91%C6%B0%E1%BB%9Dng+V%C4%A9nh+H%C6%B0ng+H%C3%A0+N%E1%BB%99i" target="_blank" rel="noopener" aria-label="Xem chỉ đường trên Google Maps">
+				<iframe class="bando" src="https://maps.google.com/maps?q=85A+ng%C3%B5+259+%C4%91%C6%B0%E1%BB%9Dng+V%C4%A9nh+H%C6%B0ng+H%C3%A0+N%E1%BB%99i&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" title="Bản đồ Thăng Long"></iframe>
+				<span class="nhanbando"><i class="fa-solid fa-location-arrow"></i> Xem chỉ đường</span>
+			</a>
         </div>
 
         <div class="footer-col">
@@ -633,16 +625,16 @@
         <div class="footer-col">
           <h4 class="footer-heading">HỖ TRỢ KHÁCH HÀNG</h4>
           <ul class="footer-links">
-            <li><a href="#about">Chính sách bảo hành 10 năm</a></li>
-            <li><a href="#about">Hướng dẫn lắp đặt & kỹ thuật</a></li>
-            <li><a href="#contact">Đăng ký đại lý toàn quốc</a></li>
-            <li><a href="#contact">Báo giá dự án & công trình</a></li>
-            <li><a href="#contact">Tra cứu bảo hành điện tử</a></li>
+            <li><a href="#gioithieu">Chính sách bảo hành 3 năm</a></li>
+            <li><a href="#gioithieu">Hướng dẫn lắp đặt & kỹ thuật</a></li>
+            <li><a href="#lienhe">Đăng ký đại lý toàn quốc</a></li>
+            <li><a href="#lienhe">Báo giá dự án & công trình</a></li>
+            <li><a href="#lienhe">Tra cứu bảo hành điện tử</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-heading">LIÊN HỆ & SHOWROOM</h4>
+          <h4 class="footer-heading">LIÊN HỆ</h4>
           <p class="footer-contact-p"><i class="fa-solid fa-location-dot"></i> Số 85A, ngõ 259, đường Vĩnh Hưng, Phường Vĩnh Hưng, TP Hà Nội, Việt Nam</p>
           <p class="footer-contact-p"><i class="fa-solid fa-phone"></i> Hotline: 0988469686</p>
           <p class="footer-contact-p"><i class="fa-solid fa-clock"></i> 08:00 – 18:00 (Từ Thứ 2 đến Thứ 7)</p>
@@ -665,9 +657,9 @@
     </div>
   </footer>
 
-  <div class="modal-overlay" id="catalogueModal" aria-hidden="true">
+  <div class="modal-overlay" id="hopthoaitai" aria-hidden="true">
     <div class="modal-dialog">
-      <button class="modal-close" id="modalCloseBtn" aria-label="Đóng popup">&times;</button>
+      <button class="modal-close" id="nutdonghopthoai" aria-label="Đóng popup">&times;</button>
       <div class="modal-body">
         <span class="sub-kicker sub-kicker--teal">ẤN PHẨM KỸ THUẬT 2026</span>
         <h3 class="modal-title">Catalogue Sen Vòi Thăng Long</h3>
@@ -684,9 +676,9 @@
             <strong>28.4 MB (Bản phát hành chính thức)</strong>
           </div>
         </div>
-        <form id="downloadCatalogueForm" class="modal-download-form">
-          <input type="text" id="catName" placeholder="Tên của bạn hoặc đơn vị KTS" required class="form-control" />
-          <input type="tel" id="catPhone" placeholder="Số điện thoại nhận link tải qua Zalo" required class="form-control" />
+        <form id="bieumautai" class="modal-download-form">
+          <input type="text" id="otentai" placeholder="Tên của bạn hoặc đơn vị KTS" required class="form-control" />
+          <input type="tel" id="osodienthoaitai" placeholder="Số điện thoại nhận link tải qua Zalo" required class="form-control" />
           <button type="submit" class="pill-btn pill-btn--teal pill-btn--full">
             <i class="fa-solid fa-download"></i> TẢI XUỐNG BẢN PDF NGAY
           </button>
@@ -695,7 +687,7 @@
     </div>
   </div>
 
-  <button class="back-to-top" id="backToTop" aria-label="Cuộn lên đầu trang">
+  <button class="back-to-top" id="nutvedau" aria-label="Cuộn lên đầu trang">
     <i class="fa-solid fa-arrow-up"></i>
   </button>
 

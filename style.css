@@ -1870,21 +1870,6 @@ ul {
   margin: 18px 0 24px;
 }
 
-.footer-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.badge-cert {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  padding: 4px 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-  color: #d1d5db;
-}
-
 .footer-heading {
   font-size: 0.8125rem;
   font-weight: 800;
@@ -2205,4 +2190,49 @@ ul {
     height: 42px;
     font-size: 1.1rem;
   }
+}
+
+.khungbando {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+.khungbando .bando {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: none; 
+  filter: saturate(0.85);
+  transition: transform 0.4s ease;
+}
+
+.khungbando:hover .bando {
+  transform: scale(1.05);
+}
+
+.nhanbando {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(6, 78, 59, 0.92);
+  border-radius: 999px;
+  transition: background 0.3s ease;
+}
+
+.khungbando:hover .nhanbando {
+  background: #059669;
 }

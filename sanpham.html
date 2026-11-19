@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <header class="header" id="header">
+  <header class="header" id="daudotrang">
     <div class="container header__inner">
       <a href="index.html" class="brand-logo" aria-label="Sen Vòi Thăng Long">
         <div class="brand-logo__symbol">
@@ -48,37 +48,37 @@
       <nav class="main-nav" aria-label="Menu chính">
         <ul class="main-nav__list">
           <li><a href="index.html" class="nav-item">Trang chủ</a></li>
-          <li><a href="index.html#about" class="nav-item">Giới thiệu</a></li>
+          <li><a href="index.html#gioithieu" class="nav-item">Giới thiệu</a></li>
           <li><a href="sanpham.html" class="nav-item is-active">Sản phẩm <i class="fa-solid fa-chevron-down nav-item__arrow"></i></a></li>
-          <li><a href="index.html#reviews" class="nav-item">Khách hàng</a></li>
-          <li><a href="index.html#contact" class="nav-item">Liên hệ</a></li>
+          <li><a href="index.html#danhgia" class="nav-item">Khách hàng</a></li>
+          <li><a href="index.html#lienhe" class="nav-item">Liên hệ</a></li>
         </ul>
       </nav>
 
       <div class="header-actions">
-        <button class="pill-btn pill-btn--dark" id="catalogueBtn">
+        <button class="pill-btn pill-btn--dark" id="nuttai">
           <span>CATALOGUE</span>
           <i class="fa-solid fa-arrow-down-to-line"></i>
         </button>
-        <button class="icon-circle-btn" id="searchTrigger" aria-label="Tìm kiếm">
+        <button class="icon-circle-btn" id="nuttimkiem" aria-label="Tìm kiếm">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-        <button class="hamburger-btn" id="hamburger" aria-label="Menu di động">
+        <button class="hamburger-btn" id="nutmenu" aria-label="Menu di động">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
 
-    <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer" id="ngankeo">
       <ul class="mobile-drawer__list">
         <li><a href="index.html" class="mobile-drawer__link">Trang chủ</a></li>
-        <li><a href="index.html#about" class="mobile-drawer__link">Giới thiệu</a></li>
+        <li><a href="index.html#gioithieu" class="mobile-drawer__link">Giới thiệu</a></li>
         <li><a href="sanpham.html" class="mobile-drawer__link is-active">Sản phẩm & Bộ sưu tập</a></li>
-        <li><a href="index.html#reviews" class="mobile-drawer__link">Khách hàng nói về chúng tôi</a></li>
-        <li><a href="index.html#projects" class="mobile-drawer__link">Công trình tiêu biểu</a></li>
-        <li><a href="index.html#contact" class="mobile-drawer__link">Liên hệ tư vấn</a></li>
+        <li><a href="index.html#danhgia" class="mobile-drawer__link">Khách hàng nói về chúng tôi</a></li>
+        <li><a href="index.html#congtrinh" class="mobile-drawer__link">Công trình tiêu biểu</a></li>
+        <li><a href="index.html#lienhe" class="mobile-drawer__link">Liên hệ tư vấn</a></li>
         <li class="mobile-drawer__action">
-          <button class="pill-btn pill-btn--teal pill-btn--full" id="catalogueBtnMobile">
+          <button class="pill-btn pill-btn--teal pill-btn--full" id="nuttaididong">
             <span>TẢI CATALOGUE 2026 (PDF)</span>
           </button>
         </li>
@@ -123,12 +123,11 @@
             <button class="filter-pill" data-filter="kitchen">Vòi rửa bát (1)</button>
           </div>
           <div class="products-count-badge">
-            Hiển thị <strong id="visibleCount">8</strong> sản phẩm
+            Hiển thị <strong id="soluonghienthi">8</strong> sản phẩm
           </div>
         </div>
 
         <div class="product-cards-grid product-cards-grid--full">
-          <!-- Sp 1 -->
           <article class="p-card" data-category="thermo">
             <div class="p-card__visual visual-teal">
               <span class="p-card__badge badge-featured">BESTSELLER</span>
@@ -149,14 +148,13 @@
               </div>
               <div class="p-card__footer">
                 <span class="p-card__price">8.450.000₫</span>
-                <button class="p-card__action" onclick="openProductModal('STL-S8800 PRO')">
+                <button class="p-card__action" onclick="mohopthoaisanpham('STL-S8800 PRO')">
                   Chi tiết <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
           </article>
 
-          <!-- Sp 2 -->
           <article class="p-card" data-category="recessed">
             <div class="p-card__visual visual-dark">
               <span class="p-card__badge badge-new">MỚI RA MẮT</span>
@@ -176,14 +174,13 @@
               </div>
               <div class="p-card__footer">
                 <span class="p-card__price">14.900.000₫</span>
-                <button class="p-card__action" onclick="openProductModal('STL-W520 NOIR')">
+                <button class="p-card__action" onclick="mohopthoaisanpham('STL-W520 NOIR')">
                   Chi tiết <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
           </article>
 
-          <!-- Sp 3 -->
           <article class="p-card" data-category="faucet">
             <div class="p-card__visual visual-warm">
               <span class="p-card__badge badge-premium">PREMIUM</span>
@@ -203,14 +200,13 @@
               </div>
               <div class="p-card__footer">
                 <span class="p-card__price">3.850.000₫</span>
-                <button class="p-card__action" onclick="openProductModal('STL-L108 MONO')">
+                <button class="p-card__action" onclick="mohopthoaisanpham('STL-L108 MONO')">
                   Chi tiết <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
           </article>
 
-          <!-- Sp 4 -->
           <article class="p-card" data-category="kitchen">
             <div class="p-card__visual visual-sage">
               <div class="p-card__art"><i class="fa-solid fa-sink"></i></div>
@@ -229,14 +225,13 @@
               </div>
               <div class="p-card__footer">
                 <span class="p-card__price">2.650.000₫</span>
-                <button class="p-card__action" onclick="openProductModal('STL-K330 FLEX')">
+                <button class="p-card__action" onclick="mohopthoaisanpham('STL-K330 FLEX')">
                   Chi tiết <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
           </article>
 
-          <!-- Sp 5 -->
           <article class="p-card" data-category="thermo">
             <div class="p-card__visual visual-warm">
               <span class="p-card__badge badge-premium">LUXURY</span>
@@ -256,14 +251,13 @@
               </div>
               <div class="p-card__footer">
                 <span class="p-card__price">11.800.000₫</span>
-                <button class="p-card__action" onclick="openProductModal('STL-S990 ROYAL')">
+                <button class="p-card__action" onclick="mohopthoaisanpham('STL-S990 ROYAL')">
                   Chi tiết <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
           </article>
 
-          <!-- Sp 6 -->
           <article class="p-card" data-category="recessed">
             <div class="p-card__visual visual-teal">
               <div class="p-card__art"><i class="fa-solid fa-bath"></i></div>
@@ -282,14 +276,13 @@
               </div>
               <div class="p-card__footer">
                 <span class="p-card__price">9.600.000₫</span>
-                <button class="p-card__action" onclick="openProductModal('STL-W300 MINIMAL')">
+                <button class="p-card__action" onclick="mohopthoaisanpham('STL-W300 MINIMAL')">
                   Chi tiết <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
           </article>
 
-          <!-- Sp 7 -->
           <article class="p-card" data-category="faucet">
             <div class="p-card__visual visual-dark">
               <div class="p-card__art"><i class="fa-solid fa-faucet"></i></div>
@@ -308,14 +301,13 @@
               </div>
               <div class="p-card__footer">
                 <span class="p-card__price">2.450.000₫</span>
-                <button class="p-card__action" onclick="openProductModal('STL-L205 TALL')">
+                <button class="p-card__action" onclick="mohopthoaisanpham('STL-L205 TALL')">
                   Chi tiết <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
             </div>
           </article>
 
-          <!-- Sp 8 -->
           <article class="p-card" data-category="thermo">
             <div class="p-card__visual visual-sage">
               <span class="p-card__badge badge-new">HOT</span>
@@ -335,7 +327,7 @@
               </div>
               <div class="p-card__footer">
                 <span class="p-card__price">7.950.000₫</span>
-                <button class="p-card__action" onclick="openProductModal('STL-S700 TITAN')">
+                <button class="p-card__action" onclick="mohopthoaisanpham('STL-S700 TITAN')">
                   Chi tiết <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </div>
@@ -379,11 +371,10 @@
           <p class="footer-bio">
             Công ty TNHH Cơ Khí & Thiết Bị Vệ Sinh Thăng Long. Tiên phong ứng dụng công nghệ PVD và van ổn nhiệt trong các giải pháp phòng tắm hiện đại tại Việt Nam.
           </p>
-          <div class="footer-badges">
-            <span class="badge-cert">ISO 9001:2015</span>
-            <span class="badge-cert">DIN EN 817 (EU)</span>
-            <span class="badge-cert">CE Certified</span>
-          </div>
+			<a class="khungbando" href="https://www.google.com/maps/search/?api=1&query=85A+ng%C3%B5+259+%C4%91%C6%B0%E1%BB%9Dng+V%C4%A9nh+H%C6%B0ng+H%C3%A0+N%E1%BB%99i" target="_blank" rel="noopener" aria-label="Xem chỉ đường trên Google Maps">
+				<iframe class="bando" src="https://maps.google.com/maps?q=85A+ng%C3%B5+259+%C4%91%C6%B0%E1%BB%9Dng+V%C4%A9nh+H%C6%B0ng+H%C3%A0+N%E1%BB%99i&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" title="Bản đồ Thăng Long"></iframe>
+				<span class="nhanbando"><i class="fa-solid fa-location-arrow"></i> Xem chỉ đường</span>
+			</a>
         </div>
 
         <div class="footer-col">
@@ -400,11 +391,11 @@
         <div class="footer-col">
           <h4 class="footer-heading">HỖ TRỢ KHÁCH HÀNG</h4>
           <ul class="footer-links">
-            <li><a href="index.html#about">Chính sách bảo hành 10 năm</a></li>
-            <li><a href="index.html#about">Hướng dẫn lắp đặt & kỹ thuật</a></li>
-            <li><a href="index.html#contact">Đăng ký đại lý toàn quốc</a></li>
-            <li><a href="index.html#contact">Báo giá dự án & công trình</a></li>
-            <li><a href="index.html#contact">Tra cứu bảo hành điện tử</a></li>
+            <li><a href="index.html#gioithieu">Chính sách bảo hành 10 năm</a></li>
+            <li><a href="index.html#gioithieu">Hướng dẫn lắp đặt & kỹ thuật</a></li>
+            <li><a href="index.html#lienhe">Đăng ký đại lý toàn quốc</a></li>
+            <li><a href="index.html#lienhe">Báo giá dự án & công trình</a></li>
+            <li><a href="index.html#lienhe">Tra cứu bảo hành điện tử</a></li>
           </ul>
         </div>
 
@@ -432,9 +423,9 @@
     </div>
   </footer>
 
-  <div class="modal-overlay" id="catalogueModal" aria-hidden="true">
+  <div class="modal-overlay" id="hopthoaitai" aria-hidden="true">
     <div class="modal-dialog">
-      <button class="modal-close" id="modalCloseBtn" aria-label="Đóng popup">&times;</button>
+      <button class="modal-close" id="nutdonghopthoai" aria-label="Đóng popup">&times;</button>
       <div class="modal-body">
         <span class="sub-kicker sub-kicker--teal">ẤN PHẨM KỸ THUẬT 2026</span>
         <h3 class="modal-title">Catalogue Sen Vòi Thăng Long</h3>
@@ -451,9 +442,9 @@
             <strong>28.4 MB (Bản phát hành chính thức)</strong>
           </div>
         </div>
-        <form id="downloadCatalogueForm" class="modal-download-form">
-          <input type="text" id="catName" placeholder="Tên của bạn hoặc đơn vị KTS" required class="form-control" />
-          <input type="tel" id="catPhone" placeholder="Số điện thoại nhận link tải qua Zalo" required class="form-control" />
+        <form id="bieumautai" class="modal-download-form">
+          <input type="text" id="otentai" placeholder="Tên của bạn hoặc đơn vị KTS" required class="form-control" />
+          <input type="tel" id="osodienthoaitai" placeholder="Số điện thoại nhận link tải qua Zalo" required class="form-control" />
           <button type="submit" class="pill-btn pill-btn--teal pill-btn--full">
             <i class="fa-solid fa-download"></i> TẢI XUỐNG BẢN PDF NGAY
           </button>
@@ -462,7 +453,7 @@
     </div>
   </div>
 
-  <button class="back-to-top" id="backToTop" aria-label="Cuộn lên đầu trang">
+  <button class="back-to-top" id="nutvedau" aria-label="Cuộn lên đầu trang">
     <i class="fa-solid fa-arrow-up"></i>
   </button>
 

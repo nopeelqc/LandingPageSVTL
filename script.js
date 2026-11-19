@@ -1,13 +1,5 @@
-/**
- * SEN VÒI THĂNG LONG – script.js
- * Version: 3.1.0 (Huge Vietnam + Super 8 Style)
- */
-
 'use strict';
 
-// ============================================================
-// 1. TỰ ĐỘNG CUỘN VỀ ĐẦU TRANG KHI LOAD / F5
-// ============================================================
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
 }
@@ -17,90 +9,74 @@ window.addEventListener('beforeunload', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Đảm bảo tải trang luôn ở vị trí đầu tiên
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
-  // ============================================================
-  // 2. STICKY HEADER & ACTIVE NAV SCROLL SPY
-  // ============================================================
-  const header = document.getElementById('header');
-  const backToTop = document.getElementById('backToTop');
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-item');
+  const daudotrang = document.getElementById('daudotrang');
+  const nutvedau = document.getElementById('nutvedau');
+  const danhsachkhung = document.querySelectorAll('section[id]');
+  const danhsachlienket = document.querySelectorAll('.nav-item');
 
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
+    const vitricuon = window.scrollY;
 
-    // Header sticky shadow
-    if (header) {
-      header.classList.toggle('is-scrolled', scrollY > 40);
+    if (daudotrang) {
+      daudotrang.classList.toggle('is-scrolled', vitricuon > 40);
     }
 
-    // Back to top button
-    if (backToTop) {
-      backToTop.classList.toggle('is-visible', scrollY > 400);
+    if (nutvedau) {
+      nutvedau.classList.toggle('is-visible', vitricuon > 400);
     }
 
-    // Scroll Spy active nav link
-    let currentId = '';
-    sections.forEach(sec => {
-      const secTop = sec.offsetTop - 120;
-      const secHeight = sec.offsetHeight;
-      if (scrollY >= secTop && scrollY < secTop + secHeight) {
-        currentId = sec.getAttribute('id');
+    let mahientai = '';
+    danhsachkhung.forEach(khung => {
+      const dinhkhung = khung.offsetTop - 120;
+      const chieucaokhung = khung.offsetHeight;
+      if (vitricuon >= dinhkhung && vitricuon < dinhkhung + chieucaokhung) {
+        mahientai = khung.getAttribute('id');
       }
     });
 
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href === `#${currentId}`) {
-        navLinks.forEach(l => l.classList.remove('is-active'));
-        link.classList.add('is-active');
+    danhsachlienket.forEach(lienket => {
+      const duongdan = lienket.getAttribute('href');
+      if (duongdan === `#${mahientai}`) {
+        danhsachlienket.forEach(muc => muc.classList.remove('is-active'));
+        lienket.classList.add('is-active');
       }
     });
   }, { passive: true });
 
-  if (backToTop) {
-    backToTop.addEventListener('click', () => {
+  if (nutvedau) {
+    nutvedau.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 
-  // ============================================================
-  // 3. SMOOTH SCROLL VỚI OFFSET CHO TẤT CẢ LIÊN KẾT NEO (#)
-  // ============================================================
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (!targetId || targetId === '#') return;
+  document.querySelectorAll('a[href^="#"]').forEach(theneo => {
+    theneo.addEventListener('click', function (sukien) {
+      const madich = this.getAttribute('href');
+      if (!madich || madich === '#') return;
 
-      const targetElem = document.querySelector(targetId);
-      if (targetElem) {
-        e.preventDefault();
-        const headerOffset = 76;
-        const elemPosition = targetElem.getBoundingClientRect().top;
-        const offsetPosition = elemPosition + window.pageYOffset - headerOffset;
+      const phantudich = document.querySelector(madich);
+      if (phantudich) {
+        sukien.preventDefault();
+        const buchieucaodau = 76;
+        const vitriphantu = phantudich.getBoundingClientRect().top;
+        const vitribudich = vitriphantu + window.pageYOffset - buchieucaodau;
 
         window.scrollTo({
-          top: offsetPosition,
+          top: vitribudich,
           behavior: 'smooth'
         });
       }
     });
   });
 
-  // ============================================================
-  // 4. HIỆU ỨNG CUỘN (SCROLL REVEAL ANIMATIONS)
-  // ============================================================
-  const revealElements = document.querySelectorAll('.reveal');
+  const danhsachhienra = document.querySelectorAll('.reveal');
 
-  if (revealElements.length > 0 && 'IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-revealed');
-          observer.unobserve(entry.target); // Chỉ chạy 1 lần cho mượt mà
-        }
+  if (danhsachhienra.length > 0 && 'IntersectionObserver' in window) {
+    const quansathienra = new IntersectionObserver((danhsachmuc) => {
+      danhsachmuc.forEach(muc => {
+        muc.target.classList.toggle('is-revealed', muc.isIntersecting);
       });
     }, {
       root: null,
@@ -108,255 +84,235 @@ document.addEventListener('DOMContentLoaded', () => {
       rootMargin: '0px 0px -40px 0px'
     });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    danhsachhienra.forEach(phantu => quansathienra.observe(phantu));
   } else {
-    // Fallback nếu trình duyệt cũ
-    revealElements.forEach(el => el.classList.add('is-revealed'));
+    danhsachhienra.forEach(phantu => phantu.classList.add('is-revealed'));
   }
 
-  // ============================================================
-  // 5. MOBILE MENU DRAWER
-  // ============================================================
-  const hamburger = document.getElementById('hamburger');
-  const mobileDrawer = document.getElementById('mobileDrawer');
+  const nutmenu = document.getElementById('nutmenu');
+  const ngankeo = document.getElementById('ngankeo');
 
-  if (hamburger && mobileDrawer) {
-    hamburger.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('is-open');
+  if (nutmenu && ngankeo) {
+    nutmenu.addEventListener('click', () => {
+      ngankeo.classList.toggle('is-open');
     });
 
-    const drawerLinks = mobileDrawer.querySelectorAll('a, button');
-    drawerLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('is-open');
+    const lienketngankeo = ngankeo.querySelectorAll('a, button');
+    lienketngankeo.forEach(lienket => {
+      lienket.addEventListener('click', () => {
+        ngankeo.classList.remove('is-open');
       });
     });
   }
 
-  // ============================================================
-  // 6. NUMBER COUNTER ANIMATION (HUGE STATS)
-  // ============================================================
-  const counters = document.querySelectorAll('.counter');
-  let counted = false;
+  const danhsachbodem = document.querySelectorAll('.counter');
+  let dadem = false;
 
-  const countUp = () => {
-    counters.forEach(counter => {
-      const target = +counter.getAttribute('data-target');
-      const duration = 1800; // 1.8 giây
-      const frameDuration = 1000 / 60;
-      const totalFrames = Math.round(duration / frameDuration);
-      let frame = 0;
+  const chaybodem = () => {
+    danhsachbodem.forEach(bodem => {
+      const muctieu = +bodem.getAttribute('data-target');
+      const thoigianchay = 1800;
+      const thoigiankhung = 1000 / 60;
+      const tongkhung = Math.round(thoigianchay / thoigiankhung);
+      let khung = 0;
 
-      const easeOutQuad = t => t * (2 - t);
+      const giamtoc = thoigian => thoigian * (2 - thoigian);
 
-      const timer = setInterval(() => {
-        frame++;
-        const progress = easeOutQuad(frame / totalFrames);
-        const currentCount = Math.round(target * progress);
+      const bohen = setInterval(() => {
+        khung++;
+        const tiendo = giamtoc(khung / tongkhung);
+        const giatrihientai = Math.round(muctieu * tiendo);
 
-        if (target >= 1000) {
-          counter.textContent = currentCount.toLocaleString('vi-VN');
+        if (muctieu >= 1000) {
+          bodem.textContent = giatrihientai.toLocaleString('vi-VN');
         } else {
-          counter.textContent = currentCount;
+          bodem.textContent = giatrihientai;
         }
 
-        if (frame === totalFrames) {
-          clearInterval(timer);
-          if (target >= 1000) {
-            counter.textContent = target.toLocaleString('vi-VN');
+        if (khung === tongkhung) {
+          clearInterval(bohen);
+          if (muctieu >= 1000) {
+            bodem.textContent = muctieu.toLocaleString('vi-VN');
           } else {
-            counter.textContent = target;
+            bodem.textContent = muctieu;
           }
         }
-      }, frameDuration);
+      }, thoigiankhung);
     });
   };
 
-  const statsSection = document.querySelector('.stats-overlap');
-  if (statsSection && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !counted) {
-          counted = true;
-          countUp();
+  const khungthongke = document.querySelector('.stats-overlap');
+  if (khungthongke && 'IntersectionObserver' in window) {
+    const quansatthongke = new IntersectionObserver((danhsachmuc) => {
+      danhsachmuc.forEach(muc => {
+        if (muc.isIntersecting && !dadem) {
+          dadem = true;
+          chaybodem();
+        } else if (!muc.isIntersecting) {
+          dadem = false;
         }
       });
     }, { threshold: 0.2 });
 
-    observer.observe(statsSection);
+    quansatthongke.observe(khungthongke);
   }
 
-  // ============================================================
-  // 7. PRODUCT FILTER PILLS
-  // ============================================================
-  const filterPills = document.querySelectorAll('.filter-pill');
-  const productCards = document.querySelectorAll('.p-card');
+  const nutloc = document.querySelectorAll('.filter-pill');
+  const thesanpham = document.querySelectorAll('.p-card');
 
-  filterPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      filterPills.forEach(p => p.classList.remove('is-active'));
-      pill.classList.add('is-active');
+  nutloc.forEach(nut => {
+    nut.addEventListener('click', () => {
+      nutloc.forEach(muc => muc.classList.remove('is-active'));
+      nut.classList.add('is-active');
 
-      const filter = pill.getAttribute('data-filter');
+      const boloc = nut.getAttribute('data-filter');
 
-      let visible = 0;
-      productCards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
-          card.style.display = 'flex';
-          visible++;
+      let hienthi = 0;
+      thesanpham.forEach(the => {
+        const danhmuc = the.getAttribute('data-category');
+        if (boloc === 'all' || danhmuc === boloc) {
+          the.style.display = 'flex';
+          hienthi++;
           setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
+            the.style.opacity = '1';
+            the.style.transform = 'translateY(0)';
           }, 50);
         } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(15px)';
+          the.style.opacity = '0';
+          the.style.transform = 'translateY(15px)';
           setTimeout(() => {
-            card.style.display = 'none';
+            the.style.display = 'none';
           }, 250);
         }
       });
 
-      const visibleCountElem = document.getElementById('visibleCount');
-      if (visibleCountElem) visibleCountElem.textContent = visible;
+      const phantusoluong = document.getElementById('soluonghienthi');
+      if (phantusoluong) phantusoluong.textContent = hienthi;
     });
   });
 
-  // ============================================================
-  // 8. CATALOGUE MODAL
-  // ============================================================
-  const catalogueModal = document.getElementById('catalogueModal');
-  const catalogueBtns = [
-    document.getElementById('catalogueBtn'),
-    document.getElementById('catalogueBtnMobile'),
-    document.getElementById('catalogueBannerBtn')
+  const hopthoaitai = document.getElementById('hopthoaitai');
+  const danhsachnuttai = [
+    document.getElementById('nuttai'),
+    document.getElementById('nuttaididong'),
+    document.getElementById('nuttaibanner')
   ];
-  const modalCloseBtn = document.getElementById('modalCloseBtn');
-  const downloadForm = document.getElementById('downloadCatalogueForm');
+  const nutdonghopthoai = document.getElementById('nutdonghopthoai');
+  const bieumautai = document.getElementById('bieumautai');
 
-  const openCatalogue = () => {
-    if (catalogueModal) {
-      catalogueModal.classList.add('is-visible');
+  const mohopthoai = () => {
+    if (hopthoaitai) {
+      hopthoaitai.classList.add('is-visible');
       document.body.style.overflow = 'hidden';
     }
   };
 
-  const closeCatalogue = () => {
-    if (catalogueModal) {
-      catalogueModal.classList.remove('is-visible');
+  const donghopthoai = () => {
+    if (hopthoaitai) {
+      hopthoaitai.classList.remove('is-visible');
       document.body.style.overflow = '';
     }
   };
 
-  catalogueBtns.forEach(btn => {
-    if (btn) btn.addEventListener('click', openCatalogue);
+  danhsachnuttai.forEach(nut => {
+    if (nut) nut.addEventListener('click', mohopthoai);
   });
 
-  if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeCatalogue);
+  if (nutdonghopthoai) nutdonghopthoai.addEventListener('click', donghopthoai);
 
-  if (catalogueModal) {
-    catalogueModal.addEventListener('click', (e) => {
-      if (e.target === catalogueModal) closeCatalogue();
+  if (hopthoaitai) {
+    hopthoaitai.addEventListener('click', (sukien) => {
+      if (sukien.target === hopthoaitai) donghopthoai();
     });
   }
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeCatalogue();
+  document.addEventListener('keydown', (sukien) => {
+    if (sukien.key === 'Escape') donghopthoai();
   });
 
-  if (downloadForm) {
-    downloadForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('catName').value.trim();
-      closeCatalogue();
-      downloadForm.reset();
-      showToast(`Cảm ơn ${name}! Link tải Catalogue 2026 đã được gửi đến bạn.`);
+  if (bieumautai) {
+    bieumautai.addEventListener('submit', (sukien) => {
+      sukien.preventDefault();
+      const ten = document.getElementById('otentai').value.trim();
+      donghopthoai();
+      bieumautai.reset();
+      hienthithongbao(`Cảm ơn ${ten}! Link tải Catalogue 2026 đã được gửi đến bạn.`);
     });
   }
 
-  // ============================================================
-  // 9. LEAD CONSULTATION FORM
-  // ============================================================
-  const consultationForm = document.getElementById('consultationForm');
-  if (consultationForm) {
-    consultationForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('formName').value.trim();
-      consultationForm.reset();
-      showToast(`Cảm ơn ${name}! Chuyên viên Thăng Long sẽ gọi điện tư vấn trong vòng 15 phút.`);
+  const bieumautuvan = document.getElementById('bieumautuvan');
+  if (bieumautuvan) {
+    bieumautuvan.addEventListener('submit', (sukien) => {
+      sukien.preventDefault();
+      const ten = document.getElementById('oten').value.trim();
+      bieumautuvan.reset();
+      hienthithongbao(`Cảm ơn ${ten}! Chuyên viên Thăng Long sẽ gọi điện tư vấn trong vòng 15 phút.`);
     });
   }
 
-  // ============================================================
-  // 10. TOAST NOTIFICATION UTILITY
-  // ============================================================
-  function showToast(message) {
-    const existing = document.querySelector('.toast-msg');
-    if (existing) existing.remove();
+  function hienthithongbao(noidung) {
+    const thongbaocu = document.querySelector('.toast-msg');
+    if (thongbaocu) thongbaocu.remove();
 
-    const toast = document.createElement('div');
-    toast.className = 'toast-msg';
-    toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 8px;"></i> ${message}`;
-    document.body.appendChild(toast);
+    const thongbao = document.createElement('div');
+    thongbao.className = 'toast-msg';
+    thongbao.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 8px;"></i> ${noidung}`;
+    document.body.appendChild(thongbao);
 
     requestAnimationFrame(() => {
-      toast.classList.add('is-show');
+      thongbao.classList.add('is-show');
     });
 
     setTimeout(() => {
-      toast.classList.remove('is-show');
-      setTimeout(() => toast.remove(), 400);
+      thongbao.classList.remove('is-show');
+      setTimeout(() => thongbao.remove(), 400);
     }, 4000);
   }
 
-  // ============================================================
-  // 11. TESTIMONIAL SLIDER (KHÁCH HÀNG NÓI VỀ CHÚNG TÔI)
-  // ============================================================
-  const testimonialCards = document.querySelectorAll('.testimonial-card');
-  const testimonialDots = document.querySelectorAll('.t-dot');
-  const testiPrevBtn = document.getElementById('testiPrevBtn');
-  const testiNextBtn = document.getElementById('testiNextBtn');
-  let currentTestiIndex = 0;
+  const thedanhgia = document.querySelectorAll('.testimonial-card');
+  const chamdanhgia = document.querySelectorAll('.t-dot');
+  const nuttruoc = document.getElementById('nuttruoc');
+  const nutsau = document.getElementById('nutsau');
+  let chisohientai = 0;
 
-  function showTestimonial(index) {
-    if (!testimonialCards.length) return;
-    if (index < 0) index = testimonialCards.length - 1;
-    if (index >= testimonialCards.length) index = 0;
-    currentTestiIndex = index;
+  function hienthidanhgia(chiso) {
+    if (!thedanhgia.length) return;
+    if (chiso < 0) chiso = thedanhgia.length - 1;
+    if (chiso >= thedanhgia.length) chiso = 0;
+    chisohientai = chiso;
 
-    testimonialCards.forEach((card, i) => {
-      card.classList.toggle('is-active', i === currentTestiIndex);
+    thedanhgia.forEach((the, vitri) => {
+      the.classList.toggle('is-active', vitri === chisohientai);
     });
 
-    testimonialDots.forEach((dot, i) => {
-      dot.classList.toggle('is-active', i === currentTestiIndex);
+    chamdanhgia.forEach((cham, vitri) => {
+      cham.classList.toggle('is-active', vitri === chisohientai);
     });
   }
 
-  if (testiPrevBtn) {
-    testiPrevBtn.addEventListener('click', () => showTestimonial(currentTestiIndex - 1));
+  if (nuttruoc) {
+    nuttruoc.addEventListener('click', () => hienthidanhgia(chisohientai - 1));
   }
-  if (testiNextBtn) {
-    testiNextBtn.addEventListener('click', () => showTestimonial(currentTestiIndex + 1));
+  if (nutsau) {
+    nutsau.addEventListener('click', () => hienthidanhgia(chisohientai + 1));
   }
 
-  testimonialDots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      const idx = +dot.getAttribute('data-index');
-      showTestimonial(idx);
+  chamdanhgia.forEach(cham => {
+    cham.addEventListener('click', () => {
+      const chiso = +cham.getAttribute('data-index');
+      hienthidanhgia(chiso);
     });
   });
 
-  if (testimonialCards.length > 0) {
+  if (thedanhgia.length > 0) {
     setInterval(() => {
-      showTestimonial(currentTestiIndex + 1);
+      hienthidanhgia(chisohientai + 1);
     }, 8000);
   }
 
-  window.openProductModal = function(sku) {
-    openCatalogue();
-    showToast(`Đang mở tài liệu kỹ thuật cho mã: ${sku}`);
+  window.mohopthoaisanpham = function(masanpham) {
+    mohopthoai();
+    hienthithongbao(`Đang mở tài liệu kỹ thuật cho mã: ${masanpham}`);
   };
 
 });
