@@ -30,19 +30,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let mahientai = '';
     danhsachkhung.forEach(khung => {
       const dinhkhung = khung.offsetTop - 120;
-      const chieucaokhung = khung.offsetHeight;
-      if (vitricuon >= dinhkhung && vitricuon < dinhkhung + chieucaokhung) {
+      if (vitricuon >= dinhkhung && vitricuon < dinhkhung + khung.offsetHeight) {
         mahientai = khung.getAttribute('id');
       }
     });
 
-    danhsachlienket.forEach(lienket => {
-      const duongdan = lienket.getAttribute('href');
-      if (duongdan === `#${mahientai}`) {
-        danhsachlienket.forEach(muc => muc.classList.remove('is-active'));
-        lienket.classList.add('is-active');
-      }
-    });
+    if (mahientai) {
+      danhsachlienket.forEach(lienket => {
+        lienket.classList.toggle('is-active', lienket.getAttribute('href') === `#${mahientai}`);
+      });
+    }
   }, { passive: true });
 
   if (nutvedau) {
@@ -59,20 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const phantudich = document.querySelector(madich);
       if (phantudich) {
         sukien.preventDefault();
-        const buchieucaodau = 76;
-        const vitriphantu = phantudich.getBoundingClientRect().top;
-        const vitribudich = vitriphantu + window.pageYOffset - buchieucaodau;
-
-        window.scrollTo({
-          top: vitribudich,
-          behavior: 'smooth'
-        });
+        const vitribudich = phantudich.getBoundingClientRect().top + window.pageYOffset - 76;
+        window.scrollTo({ top: vitribudich, behavior: 'smooth' });
       }
     });
   });
 
   const danhsachhienra = document.querySelectorAll('.reveal');
-
   if (danhsachhienra.length > 0 && 'IntersectionObserver' in window) {
     const quansathienra = new IntersectionObserver((danhsachmuc) => {
       danhsachmuc.forEach(muc => {
@@ -97,8 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ngankeo.classList.toggle('is-open');
     });
 
-    const lienketngankeo = ngankeo.querySelectorAll('a, button');
-    lienketngankeo.forEach(lienket => {
+    ngankeo.querySelectorAll('a, button').forEach(lienket => {
       lienket.addEventListener('click', () => {
         ngankeo.classList.remove('is-open');
       });
@@ -111,31 +100,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const chaybodem = () => {
     danhsachbodem.forEach(bodem => {
       const muctieu = +bodem.getAttribute('data-target');
-      const thoigianchay = 1800;
       const thoigiankhung = 1000 / 60;
-      const tongkhung = Math.round(thoigianchay / thoigiankhung);
+      const tongkhung = Math.round(1800 / thoigiankhung);
       let khung = 0;
-
-      const giamtoc = thoigian => thoigian * (2 - thoigian);
 
       const bohen = setInterval(() => {
         khung++;
-        const tiendo = giamtoc(khung / tongkhung);
+        const tiendo = (khung / tongkhung) * (2 - khung / tongkhung);
         const giatrihientai = Math.round(muctieu * tiendo);
 
-        if (muctieu >= 1000) {
-          bodem.textContent = giatrihientai.toLocaleString('vi-VN');
-        } else {
-          bodem.textContent = giatrihientai;
-        }
+        bodem.textContent = muctieu >= 1000
+          ? giatrihientai.toLocaleString('vi-VN')
+          : giatrihientai;
 
         if (khung === tongkhung) {
           clearInterval(bohen);
-          if (muctieu >= 1000) {
-            bodem.textContent = muctieu.toLocaleString('vi-VN');
-          } else {
-            bodem.textContent = muctieu;
-          }
+          bodem.textContent = muctieu >= 1000
+            ? muctieu.toLocaleString('vi-VN')
+            : muctieu;
         }
       }, thoigiankhung);
     });
@@ -159,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const nutloc = document.querySelectorAll('.filter-pill');
   const thesanpham = document.querySelectorAll('.p-card');
+  const phantusoluong = document.getElementById('soluonghienthi');
 
   nutloc.forEach(nut => {
     nut.addEventListener('click', () => {
@@ -166,11 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
       nut.classList.add('is-active');
 
       const boloc = nut.getAttribute('data-filter');
-
       let hienthi = 0;
+
       thesanpham.forEach(the => {
-        const danhmuc = the.getAttribute('data-category');
-        if (boloc === 'all' || danhmuc === boloc) {
+        const khopdanhmuc = boloc === 'all' || the.getAttribute('data-category') === boloc;
+        if (khopdanhmuc) {
           the.style.display = 'flex';
           hienthi++;
           setTimeout(() => {
@@ -186,19 +169,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      const phantusoluong = document.getElementById('soluonghienthi');
-      if (phantusoluong) phantusoluong.textContent = hienthi;
+      if (phantusoluong) {
+        phantusoluong.textContent = hienthi;
+      }
     });
   });
 
   const hopthoaitai = document.getElementById('hopthoaitai');
+  const nutdonghopthoai = document.getElementById('nutdonghopthoai');
+  const bieumautai = document.getElementById('bieumautai');
   const danhsachnuttai = [
     document.getElementById('nuttai'),
     document.getElementById('nuttaididong'),
     document.getElementById('nuttaibanner')
   ];
-  const nutdonghopthoai = document.getElementById('nutdonghopthoai');
-  const bieumautai = document.getElementById('bieumautai');
 
   const mohopthoai = () => {
     if (hopthoaitai) {
@@ -218,7 +202,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nut) nut.addEventListener('click', mohopthoai);
   });
 
-  if (nutdonghopthoai) nutdonghopthoai.addEventListener('click', donghopthoai);
+  if (nutdonghopthoai) {
+    nutdonghopthoai.addEventListener('click', donghopthoai);
+  }
 
   if (hopthoaitai) {
     hopthoaitai.addEventListener('click', (sukien) => {
@@ -229,6 +215,25 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (sukien) => {
     if (sukien.key === 'Escape') donghopthoai();
   });
+
+  function hienthithongbao(noidung) {
+    const thongbaocu = document.querySelector('.toast-msg');
+    if (thongbaocu) thongbaocu.remove();
+
+    const thongbao = document.createElement('div');
+    thongbao.className = 'toast-msg';
+    thongbao.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 8px;"></i> ${noidung}`;
+    document.body.appendChild(thongbao);
+
+    requestAnimationFrame(() => {
+      thongbao.classList.add('is-show');
+    });
+
+    setTimeout(() => {
+      thongbao.classList.remove('is-show');
+      setTimeout(() => thongbao.remove(), 400);
+    }, 4000);
+  }
 
   if (bieumautai) {
     bieumautai.addEventListener('submit', (sukien) => {
@@ -250,25 +255,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function hienthithongbao(noidung) {
-    const thongbaocu = document.querySelector('.toast-msg');
-    if (thongbaocu) thongbaocu.remove();
-
-    const thongbao = document.createElement('div');
-    thongbao.className = 'toast-msg';
-    thongbao.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 8px;"></i> ${noidung}`;
-    document.body.appendChild(thongbao);
-
-    requestAnimationFrame(() => {
-      thongbao.classList.add('is-show');
-    });
-
-    setTimeout(() => {
-      thongbao.classList.remove('is-show');
-      setTimeout(() => thongbao.remove(), 400);
-    }, 4000);
-  }
-
   const thedanhgia = document.querySelectorAll('.testimonial-card');
   const chamdanhgia = document.querySelectorAll('.t-dot');
   const nuttruoc = document.getElementById('nuttruoc');
@@ -277,9 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function hienthidanhgia(chiso) {
     if (!thedanhgia.length) return;
-    if (chiso < 0) chiso = thedanhgia.length - 1;
-    if (chiso >= thedanhgia.length) chiso = 0;
-    chisohientai = chiso;
+    chisohientai = (chiso + thedanhgia.length) % thedanhgia.length;
 
     thedanhgia.forEach((the, vitri) => {
       the.classList.toggle('is-active', vitri === chisohientai);
@@ -299,8 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   chamdanhgia.forEach(cham => {
     cham.addEventListener('click', () => {
-      const chiso = +cham.getAttribute('data-index');
-      hienthidanhgia(chiso);
+      hienthidanhgia(+cham.getAttribute('data-index'));
     });
   });
 
@@ -310,9 +293,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 8000);
   }
 
-  window.mohopthoaisanpham = function(masanpham) {
+  window.mohopthoaisanpham = function (masanpham) {
     mohopthoai();
     hienthithongbao(`Đang mở tài liệu kỹ thuật cho mã: ${masanpham}`);
   };
-
 });
