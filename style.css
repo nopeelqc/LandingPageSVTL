@@ -1582,6 +1582,64 @@ ul {
   transform: translateY(-3px);
 }
 
+.hero-label-chip {
+  margin-bottom: 32px;
+  transform: translateY(-35px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 1024px) {
   .hero-bottom-row {
     grid-template-columns: 1fr;
